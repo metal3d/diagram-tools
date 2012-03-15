@@ -205,8 +205,8 @@
           <xsl:sort select="@ry" order="descending"/>
           <xsl:call-template name="poly-main"/>
         </xsl:for-each>
-      </g>
       <xsl:apply-templates select="svg:text"/>
+      </g>
     </g>
   </xsl:template>
   <xsl:template match="svg:text">
