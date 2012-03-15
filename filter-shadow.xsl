@@ -172,8 +172,8 @@
         </xsl:for-each>
       </defs>
       <!-- thanks http://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
-      <filter id="shadow" height="130%" width="130%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <filter id="shadow" height="145%" width="145%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
         <!-- stdDeviation is how much to blur -->
         <feOffset dx="2" dy="2" result="offsetblur"/>
         <!-- how much to offset -->
@@ -195,15 +195,17 @@
     </g>
   </xsl:template>
   <xsl:template match="svg:g">
-    <g filter="url(#shadow)">
-      <!-- append a "g" over next g -->
+    <!-- append a "g" over next g -->
+    <g>
       <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
       </xsl:copy>
-      <xsl:for-each select="svg:polygon|svg:ellipse|svg:polyline">
-        <xsl:sort select="@ry" order="descending"/>
-        <xsl:call-template name="poly-main"/>
-      </xsl:for-each>
+      <g filter="url(#shadow)">
+        <xsl:for-each select="svg:polygon|svg:ellipse|svg:polyline">
+          <xsl:sort select="@ry" order="descending"/>
+          <xsl:call-template name="poly-main"/>
+        </xsl:for-each>
+      </g>
       <xsl:apply-templates select="svg:text"/>
     </g>
   </xsl:template>
