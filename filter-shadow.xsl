@@ -173,7 +173,7 @@
       </defs>
       <!-- thanks http://stackoverflow.com/questions/6088409/svg-drop-shadow-using-css3 -->
       <filter id="shadow" height="145%" width="145%">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
         <!-- stdDeviation is how much to blur -->
         <feOffset dx="2" dy="2" result="offsetblur"/>
         <!-- how much to offset -->
@@ -212,7 +212,7 @@
   <xsl:template match="svg:text">
     <text>
       <xsl:apply-templates select="@*"/>
-      <xsl:attribute name="style">font-size:10px; font-family:Verdana</xsl:attribute>
+          <xsl:attribute name="style">font-size:10px</xsl:attribute>
       <xsl:apply-templates select="text()"/>
     </text>
   </xsl:template>
